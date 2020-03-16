@@ -1,11 +1,11 @@
 <template>
   <div class="made-by">
     <p>
-      Made by Elfwine
-      <!-- <a target="_blank" rel="noopener" href="https://github.com/cvuorinen/score-app">
+      Made with
+      <a target="_blank" rel="noopener" href="https://github.com/cvuorinen/score-app">
         <font-awesome-icon :icon="['fab', 'github']"></font-awesome-icon>
       </a>
-      by <a target="_blank" rel="noopener" href="https://github.com/cvuorinen">@cvuorinen</a> -->
+      by <a target="_blank" rel="noopener" href="https://github.com/cvuorinen">@cvuorinen</a>
     </p>
   </div>
 </template>
