@@ -1,5 +1,7 @@
 # score-app
 
+Demo [here](https://elfwine.github.io/score-app/demo/).
+
 ## Project setup
 ```
 npm install
