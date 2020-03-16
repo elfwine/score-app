@@ -32,7 +32,9 @@ export default class Fouls extends Vue {
     if (event.ctrlKey) {
       this.$emit('decrement')
     } else {
-      this.$emit('increment')
+      if(this.value < 9) {
+        this.$emit('increment')
+      }
     }
   }
 }
@@ -40,7 +42,7 @@ export default class Fouls extends Vue {
 
 <style scoped>
 .fouls {
-  font-size: 0.1em;
+  font-size: 0.2em;
   color: orange;
 }
 .fouls.bonus {

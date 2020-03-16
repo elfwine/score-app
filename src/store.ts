@@ -25,6 +25,10 @@ export type State = {
     time: number;
     running: boolean;
   },
+  shotclock: {
+    time: number;
+    running: boolean;
+  },
   editable: boolean;
 }
 
@@ -44,6 +48,10 @@ const defaultState: State = {
     time: 10*60,
     running: false
   },
+  shotclock: {
+    time: 24,
+    running: false
+  },
   editable: false
 }
 
@@ -61,7 +69,8 @@ export default new Vuex.Store<State>({
   state: defaultState,
   getters: {
     minutes: state => Math.floor(state.clock.time / 60),
-    seconds: state => state.clock.time % 60
+    seconds: state => state.clock.time % 60,
+    shotclock: state => state.shotclock.time
   },
   mutations: {
     incrementHome: (state) => state.score.home++,
@@ -76,17 +85,21 @@ export default new Vuex.Store<State>({
     decrementPeriod: (state) => state.period && state.period--,
     setClock: (state, running: boolean) => state.clock.running = running,
     setTime: (state, time: number) => state.clock.time = time,
+    setShotClock: (state, running: boolean) => state.shotclock.running = running,
+    setShotClockTime: (state, time: number) => state.shotclock.time = time,    
     setPossession: (state, value: Possessions) => state.possession = value,
     toggleEditable: (state) => state.editable = !state.editable
   },
   actions: {
     startClock ({ commit, dispatch }) {
       commit('setClock', true)
+      commit('setShotClock', true)
 
-      intervalID = setInterval(() => dispatch('updateClock', -1), 1000)
+      intervalID = setInterval(() => { dispatch('updateClock', -1); dispatch('updateShotClock', -1) }, 1000)
     },
     stopClock ({ commit }) {
       commit('setClock', false)
+      commit('setShotClock', false)
 
       clearInterval(intervalID)
     },
@@ -119,6 +132,33 @@ export default new Vuex.Store<State>({
     playBuzzer() {
       // Using cloneNode to overcome issue on iOS only playing the sound once
       (audio.cloneNode() as HTMLAudioElement).play();
+    },
+    updateShotClock ({ state, commit, dispatch }, amount: number) {
+      const time = state.shotclock.time + amount;
+
+      if (time < 0) {
+        commit('setShotClocTime', 0)
+        dispatch('playBuzzer')
+        dispatch('stopClock')
+        return dispatch('stopShotClock')
+      }
+      commit('setShotClockTime', time)
+    },
+    incrementShotClock({ state, commit }) {
+      var time = state.shotclock.time + 1;
+      if(time > 24) { time = 24 }
+      commit('setShotClockTime', time)
+    },
+    decrementShotClock({ state, commit }) {
+      var time = state.shotclock.time - 1;
+      if(time < 0) { time = 0 }
+      commit('setShotClockTime', time)
+    },
+    resetShotClock1({ commit }) {
+      commit('setShotClockTime', 24)
+    },
+    resetShotClock2({ commit }) {
+      commit('setShotClockTime', 14)
     }
   }
 })

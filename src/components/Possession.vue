@@ -5,7 +5,9 @@
          home: this.direction === 'home',
          away: this.direction === 'away',
        }"
-       @click="onClick">
+       @click="onClick" 
+       v-shortkey="keyMap"
+       @shortkey="keyAction">
   </div>
 </template>
 
@@ -26,6 +28,17 @@ export default class Possession extends Vue {
 
   onClick () {
     this.$emit('toggle')
+  }
+  keyMap = { leftdirection: ['leftarrow'], rightdirection: ['rightarrow'] }
+  keyAction (event: { srcKey: string }) {
+    switch (event.srcKey) {
+      case 'leftdirection':
+        this.direction = 'home'
+        return this.$emit('toggle')
+      case 'rightdirection':
+        this.direction = 'away'
+        return this.$emit('toggle')
+    }
   }
 }
 </script>

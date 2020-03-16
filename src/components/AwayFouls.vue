@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="fouls-container">
+    <div class="fouls-container" v-shortkey="keyMap" @shortkey="keyAction">
       <h5 contenteditable="true" spellcheck="false">
         FOULS
       </h5>
@@ -30,6 +30,15 @@ export default class AwayFouls extends Vue {
   }
   decrement () {
     this.$store.commit('decrementAwayFouls')
+  }
+  keyMap = { increment: ['t'], decrement: ['g'] }
+  keyAction (event: { srcKey: string }) {
+    switch (event.srcKey) {
+      case 'increment':
+        return this.increment()
+      case 'decrement':
+        return this.decrement()
+    }
   }
 }
 </script>

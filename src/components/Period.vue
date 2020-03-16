@@ -39,7 +39,7 @@ export default class Period extends Vue {
     this.$store.commit('decrementPeriod')
   }
 
-  keyMap = { increment: ['pageup'], decrement: ['pagedown'] }
+  keyMap = { increment: ['o'], decrement: ['p'] }
   keyAction (event: { srcKey: string }) {
     switch (event.srcKey) {
       case 'increment':

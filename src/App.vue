@@ -29,8 +29,8 @@
         <AwayFouls />
       </div>
 
-      <div class="buzzer-container">
-        <Buzzer />
+      <div class="shotclock-container">
+        <ShotClock />
       </div>
 
       <div class="edit-toggle-container">
@@ -41,10 +41,14 @@
         <Footer />
       </div>
 
-      <div class="made-by-container">
-        <MadeBy />
+      <div class="buzzer-container">
+        <Buzzer />
       </div>
 
+<!--      <div class="made-by-container">
+        <MadeBy />
+      </div>
+-->
     </div>
   </div>
 </template>
@@ -63,7 +67,8 @@ import AwayFouls from './components/AwayFouls.vue';
 import Buzzer from './components/Buzzer.vue';
 import Footer from './components/Footer.vue';
 import EditToggle from './components/EditToggle.vue';
-import MadeBy from './components/MadeBy.vue';
+//import MadeBy from './components/MadeBy.vue';
+import ShotClock from './components/ShotClock.vue';
 
 @Component({
   store,
@@ -79,7 +84,7 @@ import MadeBy from './components/MadeBy.vue';
     Buzzer,
     Footer,
     EditToggle,
-    MadeBy,
+    ShotClock,
   },
 })
 export default class App extends Vue {}
@@ -130,18 +135,18 @@ body {
 }
 .clock-container {
   grid-area: middle;
-  margin-top: 10%;
+  margin-top: 3%;
 }
 .home-score-container {
   grid-area: left;
-  margin-top: 20%;
+  margin-top: 6%;
 }
 .away-score-container {
   grid-area: right;
-  margin-top: 20%;
+  margin-top: 6%;
 }
 .middle-container {
-  margin-top: 10%;
+  margin-top: 2%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -152,9 +157,13 @@ body {
 .away-fouls-container {
   grid-area: bottom-right;
 }
+/*
 .buzzer-container {
   grid-area: bottom;
   margin-top: 10%;
+} */
+.shotclock-container {
+  grid-area: bottom;
 }
 .edit-toggle-container {
   grid-area: footer-left;
@@ -163,10 +172,13 @@ body {
 .footer-container {
   grid-area: footer;
 }
-
-.made-by-container {
+.buzzer-container {
   grid-area: footer-right;
 }
+/*
+.made-by-container {
+  grid-area: footer-right;
+} */
 
 /* Fixed aspect ratio based on either width or height of the viewport */
 .container {

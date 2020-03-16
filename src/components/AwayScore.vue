@@ -25,7 +25,7 @@ export default class AwayScore extends Vue {
     this.$store.commit('decrementAway')
   }
 
-  keyMap = { increment: ['arrowup'], decrement: ['arrowdown'] }
+  keyMap = { increment: ['e'], decrement: ['d'] }
   keyAction (event: { srcKey: string }) {
     switch (event.srcKey) {
       case 'increment':

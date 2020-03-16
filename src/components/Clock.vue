@@ -58,13 +58,14 @@ export default class Clock extends Vue {
   color: red;
 }
 .clock.active {
-  border-color: rgba(255, 0, 0, .8);
+  border-color: rgba(173, 255, 47, .8);
+  color: greenyellow;
 }
 .clock .dots {
   color: rgba(255, 255, 255, .8);
 }
 .clock.active .dots {
-  color: red;
+  color: greenyellow;
 }
 .clock .buttons {
   font-size: 0.3em;

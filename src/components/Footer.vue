@@ -4,7 +4,7 @@
       <span class="icon">
         <font-awesome-icon icon="basketball-ball"></font-awesome-icon>
       </span>
-      Score App
+      Bball Scoreboard
     </h2>
   </div>
 </template>

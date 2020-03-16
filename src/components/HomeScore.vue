@@ -25,7 +25,7 @@ export default class HomeScore extends Vue {
     this.$store.commit('decrementHome')
   }
 
-  keyMap = { increment: ['1'], decrement: ['§'] }
+  keyMap = { increment: ['q'], decrement: ['a'] }
   keyAction (event: { srcKey: string }) {
     switch (event.srcKey) {
       case 'increment':
